@@ -1,0 +1,22 @@
+{
+  "name": "scraper-db",
+  "version": "0.0.1",
+  "description": "Simple scraper backend endpoint with db operations.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "format": "prettier --write --check 'src/**/*.js'"
+  },
+  "keywords": [
+    "scraper",
+    "mongodb",
+    "endpoint"
+  ],
+  "author": "David Klajbar <david@klajbar.com>",
+  "dependencies": {
+    "mongoose": "5.11.1"
+  },
+  "devDependencies": {
+    "prettier": "2.2.1"
+  }
+}
