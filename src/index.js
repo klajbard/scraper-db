@@ -3,9 +3,9 @@ const http = require("http");
 const mongoose = require("mongoose");
 const router = require("./router");
 
-const urldb = process.ENV.urldb || "mongodb://localhost/scraper";
-const host = process.ENV.hostname || "localhost";
-const port = process.ENV.port || 8000;
+const urldb = process.env.urldb || "mongodb://localhost/scraper";
+const host = process.env.hostname || "localhost";
+const port = process.env.port || 8000;
 
 mongoose.connect(urldb, {
   useNewUrlParser: true,
