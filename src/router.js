@@ -59,6 +59,6 @@ module.exports = function (req, res) {
       break;
     default:
       res.writeHead(404);
-      res.end("Page not found. :(")
+      res.end("Page not found. :(");
   }
 };

@@ -45,6 +45,7 @@ process.ENV.port=8000;
   date: Number,
   discount: Number,
   currentPrice: Number,
+  foundByName: String,
 }
 ```
 

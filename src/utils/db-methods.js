@@ -10,6 +10,7 @@ async function createDocument(item) {
     date: Date.now(),
     discount: item.discount,
     currentPrice: item.currentPrice,
+    foundByName: item.foundByName,
   });
   const result = await product.save();
 
