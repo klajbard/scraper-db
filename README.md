@@ -46,6 +46,7 @@ process.ENV.port=8000;
   discount: Number,
   currentPrice: Number,
   foundByName: String,
+  arukeresoUrl: String
 }
 ```
 

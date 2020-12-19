@@ -9,6 +9,7 @@ const productSchema = new mongoose.Schema({
   discount: Number,
   currentPrice: Number,
   foundByName: String,
+  arukeresoUrl: String,
 });
 
 module.exports = mongoose.model("Product", productSchema, "products");

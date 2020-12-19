@@ -11,6 +11,7 @@ async function createDocument(item) {
     discount: item.discount,
     currentPrice: item.currentPrice,
     foundByName: item.foundByName,
+    arukeresoUrl: item.arukeresoUrl,
   });
   const result = await product.save();
 
