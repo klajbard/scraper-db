@@ -29,7 +29,7 @@ module.exports = function (req, res) {
           ret = await createDocument(item);
           res.setHeader("Content-Type", "application/json");
           res.writeHead(201, headers);
-        } else if (foundProduct.currentPrice > item.currentPrice) {
+        } else {
           ret = await updateDocument(item);
           res.setHeader("Content-Type", "application/json");
           res.writeHead(200, headers);
