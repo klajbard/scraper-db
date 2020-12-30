@@ -30,9 +30,10 @@ process.ENV.port=8000;
 
 ### Routes
 **src/router.js**
-- `/add` route expects a JSON formatted object with product information
-- `/products` lists all products from the database
-- `/product/:name` return with a single product if found
+- GET `/add` route expects a JSON formatted object with product information
+- GET `/products` lists all products from the database
+- GET `/product/:name` return with a single product if found
+- PATCH `/product/:name` updates the product with the given `arukeresoUrl` and/or `confirmed` state
 
 ### Product schema
 **src/models/product-model.js**
@@ -46,7 +47,8 @@ process.ENV.port=8000;
   discount: Number,
   currentPrice: Number,
   foundByName: String,
-  arukeresoUrl: String
+  arukeresoUrl: String,
+  confirmed: Boolean
 }
 ```
 

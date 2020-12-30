@@ -10,6 +10,7 @@ const productSchema = new mongoose.Schema({
   currentPrice: Number,
   foundByName: String,
   arukeresoUrl: String,
+  confirmed: Boolean,
 });
 
 module.exports = mongoose.model("Product", productSchema, "products");
