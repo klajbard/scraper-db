@@ -2,6 +2,18 @@ const ProductModel = require("./models/product-model");
 const { createDocument, updateDocument } = require("./utils/db-methods");
 
 module.exports = function (req, res) {
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, OPTIONS, PATCH, POST',
+    'Access-Control-Max-Age': 2592000,
+    'Access-Control-Allow-Headers': 'Content-Type',
+  };
+
+  if (req.method === 'OPTIONS') {
+    res.writeHead(204, headers);
+    res.end();
+    return;
+  }
   switch (true) {
     case /\/add/.test(req.url):
       // '/add'
@@ -16,11 +28,11 @@ module.exports = function (req, res) {
         if (!foundProduct) {
           ret = await createDocument(item);
           res.setHeader("Content-Type", "application/json");
-          res.writeHead(201);
+          res.writeHead(201, headers);
         } else if (foundProduct.currentPrice > item.currentPrice) {
           ret = await updateDocument(item);
           res.setHeader("Content-Type", "application/json");
-          res.writeHead(200);
+          res.writeHead(200, headers);
         }
         res.end(ret);
       });
@@ -32,7 +44,7 @@ module.exports = function (req, res) {
         .then((products) => {
           res.setHeader("Access-Control-Allow-Origin", "*");
           res.setHeader("Content-Type", "application/json");
-          res.writeHead(200);
+          res.writeHead(200, headers);
           res.end(JSON.stringify(products));
         })
         .catch((err) => {
@@ -43,17 +55,16 @@ module.exports = function (req, res) {
       // Get parameter from url as '/product/:name'
       const name = unescape(req.url.split("/")[2].split("?")[0]);
       if (!name) {
-        res.writeHead(400);
+        res.writeHead(400, headers);
         res.end("Invalid request!");
         break;
       }
-      console.log(req.method);
       if (req.method === "GET") {
         ProductModel.find({ name })
           .exec()
           .then((product) => {
             res.setHeader("Content-Type", "application/json");
-            res.writeHead(200);
+            res.writeHead(200, headers);
             res.end(JSON.stringify(product));
           })
           .catch((err) => {
@@ -66,6 +77,7 @@ module.exports = function (req, res) {
         });
         req.on("end", async function () {
           console.log(body);
+          console.log(name)
           const item = JSON.parse(body);
           ProductModel.updateOne(
             { name },
@@ -74,19 +86,19 @@ module.exports = function (req, res) {
             .exec()
             .then((product) => {
               res.setHeader("Content-Type", "application/json");
-              res.writeHead(200);
+              res.writeHead(200, headers);
               res.end(JSON.stringify(product));
             })
             .catch((err) => {
               console.log(err);
-              res.writeHead(500);
+              res.writeHead(500, headers);
               res.end("Something went wrong. :(");
             });
         });
       }
       break;
     default:
-      res.writeHead(404);
+      res.writeHead(404, headers);
       res.end("Page not found. :(");
   }
 };
