@@ -76,8 +76,6 @@ module.exports = function (req, res) {
           body += chunk;
         });
         req.on("end", async function () {
-          console.log(body);
-          console.log(name)
           const item = JSON.parse(body);
           ProductModel.updateOne(
             { name },

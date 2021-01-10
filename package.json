@@ -14,7 +14,7 @@
   ],
   "author": "David Klajbar <david@klajbar.com>",
   "dependencies": {
-    "mongoose": "5.11.1"
+    "mongoose": "5.11.11"
   },
   "devDependencies": {
     "prettier": "2.2.1"

@@ -52,4 +52,7 @@ process.ENV.port=8000;
 }
 ```
 
+### To remove records
+`db.products.remove({date: {"$lt": Date(...) }})`
+
 [![Wattaurus](.github/logo.png)](https://klajbar.com)
